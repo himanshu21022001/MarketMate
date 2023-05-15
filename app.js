@@ -8,12 +8,13 @@ const app = express();// creating server
 
 app.use(express.json());// Middlewares// converts data in human readebale form 
 app.use(cors());
-app.use("/books", router); // localhost:5000/books
+app.use("/books", router); 
 
+//path for deployment
 app.use(express.static("client/build"));
 const path = require("path"); 
 app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));})
+res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));})
 
 mongoose
   .connect(
